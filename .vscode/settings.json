@@ -4,6 +4,9 @@
         "*.layout-template": "vue",
         "*.vue": "vue",
         "*.tcc": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "vector": "cpp"
     }
 }
