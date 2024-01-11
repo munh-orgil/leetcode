@@ -43,5 +43,4 @@ int main() {
     for (int i = 0; i < m; i++) {
         cin >> cookies[i];
     }
-    ListNode *res = addTwoNumbers()
 }
