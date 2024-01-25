@@ -10,6 +10,9 @@ using namespace std;
 class Solution {
 public:
     int longestCommonSubsequence(string s, string t) {
+        cin.tie(NULL);
+        cout.tie(NULL);
+        ios_base::sync_with_stdio(false);
         int n = s.size();
         int m = t.size();
         vector<vector<int>> dp(n + 1, vector<int> (m + 1, 0));
