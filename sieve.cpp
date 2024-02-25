@@ -36,13 +36,24 @@ const ll INFL = 0x3f3f3f3f3f3f3f3fLL;
 const double PI = acos(-1);
 
 int main() {
-    vector<int> nums = { 852,858,660,462,930,286,990,945,770,715,770,818,204,770,693,180,398,840,330,770 };
-    set<int> st;
-    for (int i = 0; i < nums.size(); i++) {
-        st.insert(nums[i]);
+    int n = 1e5;
+    vector<int> p;
+    vector<bool> b(n, 0);
+    for (int i = 2; i <= sqrt(n); i++) {
+        if (!b[i]) {
+            p.push_back(i);
+            for (int j = 1; i * j <= n; j++) {
+                b[i * j] = 1;
+            }
+        }
     }
-    for (auto elem : st) {
-        cout << elem << " ";
+    for (int i = sqrt(n); i <= n; i++) {
+        if (!b[i]) {
+            p.push_back(i);
+        }
     }
-    cout << endl;
+    for (int i = 0; i < p.size() - 1; i++) {
+        cout << p[i] << ",";
+    }
+    cout << p[p.size() - 1] << endl;
 }
