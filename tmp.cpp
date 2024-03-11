@@ -29,20 +29,19 @@ using namespace std;
 
 const int N = 3e5 + 7;
 const int MOD = 1e9 + 7;
-const int moveX[] = { -1, 0, 1, 0 };
-const int moveY[] = { 0, 1, 0, -1 };
+const int moveX[] = {-1, 0, 1, 0};
+const int moveY[] = {0, 1, 0, -1};
 const int INFI = 0x3f3f3f3f;
 const ll INFL = 0x3f3f3f3f3f3f3f3fLL;
 const double PI = acos(-1);
 
+void Solve() {
+}
+
 int main() {
-    vector<int> nums = { 852,858,660,462,930,286,990,945,770,715,770,818,204,770,693,180,398,840,330,770 };
-    set<int> st;
-    for (int i = 0; i < nums.size(); i++) {
-        st.insert(nums[i]);
+    int test;
+    cin >> test;
+    while(test--) {
+        Solve();
     }
-    for (auto elem : st) {
-        cout << elem << " ";
-    }
-    cout << endl;
 }
