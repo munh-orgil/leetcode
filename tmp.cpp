@@ -29,19 +29,32 @@ using namespace std;
 
 const int N = 3e5 + 7;
 const int MOD = 1e9 + 7;
-const int moveX[] = {-1, 0, 1, 0};
-const int moveY[] = {0, 1, 0, -1};
+const int moveX[] = { -1, 0, 1, 0 };
+const int moveY[] = { 0, 1, 0, -1 };
 const int INFI = 0x3f3f3f3f;
 const ll INFL = 0x3f3f3f3f3f3f3f3fLL;
 const double PI = acos(-1);
 
-void Solve() {
-}
-
 int main() {
-    int test;
-    cin >> test;
-    while(test--) {
-        Solve();
+    freopen("a.txt", "w", stdout);
+    string s;
+    cin >> s;
+    int n = s.size();
+    for (int i = 0; i < 26; i++) {
+        string t = s, str = s;
+        for (int j = 0; j < n; j++) {
+            t[j] = char(((t[j] - 'A' + i) % 26) + 'A');
+        }
+        cout << t << endl;
+        // for (int j = 1; j < n; j++) {
+        //     int idx = 0;
+        //     for (int k = 0; k < j; k++) {
+        //         for (int l = k; l < n; l += j) {
+        //             str[idx] = t[l];
+        //             idx++;
+        //         }
+        //     }
+        //     cout << str << endl;
+        // }
     }
 }
