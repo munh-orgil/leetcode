@@ -36,25 +36,27 @@ const ll INFL = 0x3f3f3f3f3f3f3f3fLL;
 const double PI = acos(-1);
 
 int main() {
-    freopen("a.txt", "w", stdout);
     string s;
     cin >> s;
-    int n = s.size();
-    for (int i = 0; i < 26; i++) {
-        string t = s, str = s;
-        for (int j = 0; j < n; j++) {
-            t[j] = char(((t[j] - 'A' + i) % 26) + 'A');
+    int cnt[3] = { 0 };
+    for (char c : s) {
+        if (c == ')') {
+            cnt[1]++;
         }
-        cout << t << endl;
-        // for (int j = 1; j < n; j++) {
-        //     int idx = 0;
-        //     for (int k = 0; k < j; k++) {
-        //         for (int l = k; l < n; l += j) {
-        //             str[idx] = t[l];
-        //             idx++;
-        //         }
-        //     }
-        //     cout << str << endl;
-        // }
+        if (c == '*') {
+            cnt[2]++;
+        }
+    }
+    for (char c : s) {
+        if (c == '(') {
+            cnt[0]++;
+        }
+        else if (c == ')') {
+            cnt[1]--;
+        }
+        else if (c == '*') {
+            cnt[2]--;
+        }
+        cout << cnt[0] _ cnt[1] _ cnt[2] << endl;
     }
 }
