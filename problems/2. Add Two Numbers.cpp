@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 struct ListNode {
     int val;
     ListNode *next;
@@ -14,33 +13,31 @@ struct ListNode {
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        int sum;
-        ListNode *ans = new ListNode;
+        int r = 0;
+        ListNode *ret = new ListNode;
+        ListNode *ln = ret;
         while (l1 != NULL || l2 != NULL) {
             int val1 = 0, val2 = 0;
             if (l1 != NULL) {
                 val1 = l1->val;
+                l1 = l1->next;
             }
             if (l2 != NULL) {
                 val2 = l2->val;
+                l2 = l2->next;
             }
-            sum = val1 + val2;
-            ans->val = sum;
-            ans->next = new ListNode;
+            ln->val = (val1 + val2 + r) % 10;
+            r = (val1 + val2 + r) / 10;
+
+            if (l1 != NULL || l2 != NULL) {
+                ln->next = new ListNode;
+                ln = ln->next;
+            }
+            else if (r) {
+                ln->val = r;
+            }
         }
-        return ans;
+
+        return ret;
     }
 };
-
-int main() {
-    Solution sol = Solution{};
-    int n, m;
-    cin >> n >> m;
-    vector<int> greeds(n), cookies(m);
-    for (int i = 0; i < n; i++) {
-        cin >> greeds[i];
-    }
-    for (int i = 0; i < m; i++) {
-        cin >> cookies[i];
-    }
-}
