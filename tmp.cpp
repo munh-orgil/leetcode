@@ -1,69 +1,44 @@
-#include<bits/stdc++.h>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-#define debug(a) cout << #a << " = " << a << endl;
+unordered_map<long long, long long> mp;
 
-class Solution {
-public:
-    string removeKdigits(string num, int k) {
-        int n=num.size();
-        string s="";
-        stack <char > a;
-        int total=0, i, j, l;
-        char ch;
-        for(i=0;i<n;i++){
-            if(a.empty()){
-                a.push(num[i]);
-            }
-            else{
-                ch = a.top();
-                // cout<<ch<<" "<<num[i]<<endl;
-                if(ch>num[i]){
-                    a.pop();
-                    total++;
-                    if(k==total) break;
-                    i--;
-                }
-                else{
-                    a.push(num[i]);
-                }
-            }
-        }
-        cout<<total<<" "<<i<<endl;
-        while(total!=k){
-            a.pop();
-            total++;
-        }
-        l=n-k-1;
-        j=n-1;
-        stack < char > b;
-        while(i<=j){
-            // s[l]=num[j];
-            s=num[j]+s;
-            b.push(num[j]);
-            j--;
-            l--;
-        }
-        
-        // string t="";
-        while(!a.empty()){
-            // if(a.top() !='0' ){
-            //     t=a.top()+t;
-            // }
-            b.push(a.top());
-            a.pop();
-        }
-        string t="";
-        bool tr=false;
-        while(!b.empty()){
-            if(tr || b.top()!='0'){
-                tr=true;
-                t=t+b.top();
-            }
-            b.pop();
-        }
-        if(t.size()==0) return "0";
-        return t;
+long long dfs(long long cur) {
+    if (mp.find(cur) != mp.end()) {
+        return mp[cur];
     }
-};
+    if (cur & 1) {
+        mp[cur] = dfs(cur + (cur + 1) / 2) + 2;
+        return mp[cur];
+    }
+    long long tmp = cur;
+    while (tmp % 2 == 0) {
+        tmp /= 2;
+        if (mp.find(tmp) != mp.end()) {
+            break;
+        }
+    }
+    long long val = dfs(tmp);
+    while (tmp < cur) {
+        tmp *= 2;
+        val++;
+        mp[tmp] = val;
+    }
+    return mp[cur];
+}
+
+int main() {
+    int t, n;
+    cin >> t;
+
+    mp[1] = 0;
+    vector<int> ans(5e6 + 1, 0);
+    for (int i = 2; i <= 5e6; i++) {
+        dfs(i);
+    }
+    while (t--) {
+        cin >> n;
+        
+    }
+    return 0;
+}
