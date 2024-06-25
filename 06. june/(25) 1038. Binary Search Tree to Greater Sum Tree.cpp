@@ -20,23 +20,16 @@ public:
         cout.tie(NULL);
     }
     TreeNode* bstToGst(TreeNode* root) {
-        return dfs(root);
+        dfs(root);
+        return root;
     }
-    TreeNode* dfs(TreeNode* node) {
-        TreeNode* ret = new(TreeNode);
-        if (node->left == NULL && node->right == NULL) {
-            sum += node->val;
-            ret->val = sum;
-            return ret;
+    void dfs(TreeNode* node) {
+        if (node == NULL) {
+            return;
         }
-        if (node->right != NULL) {
-            ret->right = dfs(node->right);
-        }
+        dfs(node->right);
         sum += node->val;
-        ret->val = sum;
-        if (node->left != NULL) {
-            ret->left = dfs(node->left);
-        }
-        return ret;
+        node->val = sum;
+        dfs(node->left);
     }
 };
