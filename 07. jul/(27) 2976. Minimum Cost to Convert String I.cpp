@@ -21,9 +21,9 @@ public:
             int to = changed[i] - 'a';
             dist[from][to] = min(dist[from][to], (long long)(cost[i]));
         }
-        for (int i = 0; i < 26; i++) {
-            for (int j = 0; j < 26; j++) {
-                for (int k = i + 1; k < 26; k++) {
+        for (int k = 0; k < 26; k++) {
+            for (int i = 0; i < 26; i++) {
+                for (int j = 0; j < 26; j++) {
                     dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
                 }
             }
